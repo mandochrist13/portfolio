@@ -1,4 +1,6 @@
+"use client";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 
 export default function hero() {
@@ -18,7 +20,15 @@ export default function hero() {
           <span key={index} className={`span-animation-${index}`}></span>
         ))}
       </div>
-        <main className="flex items-center gap-6 justify-center">
+   
+        <motion.main 
+initial={{ opacity: 0, scale: 0.5 }}
+animate={{ opacity: 1, scale: 1 }}
+transition={{
+  duration: 0.8,
+  delay: 0.5,
+  ease: [0, 0.71, 0.2, 1.01]
+}} className="flex items-center gap-6 justify-center">
           <div className="flex md:block flex-col items-center justify-center">
             <h3 className="text-[#bbf3ff] text-xl">Bonjour, je suis</h3>
             <h1 className="text-3xl text-white md:text-5xl text-center md:text-left">
@@ -41,7 +51,8 @@ export default function hero() {
               height={1000}
             />
           </div>
-        </main>
+        </motion.main>
+        
       </div>
     </div>
   );

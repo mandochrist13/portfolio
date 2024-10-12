@@ -1,5 +1,7 @@
+"use client";
 import Image from "next/image";
 import { services } from "../data/serv";
+import { motion } from "framer-motion";
 
 export default function servivce() {
   return (
@@ -12,7 +14,7 @@ export default function servivce() {
       </div>
       <div className="flex flex-col md:flex-row gap-7">
       {services.map((code) => (
-        <div className="border rounded-sm p-4 flex flex-col gap-3 border-[#bbf3ff]" key={code.id}>
+        <motion.div  className="border rounded-sm p-4 flex flex-col gap-3 border-[#bbf3ff]" key={code.id}>
           <div>
             <Image
               src={code.photo}
@@ -26,7 +28,7 @@ export default function servivce() {
             <h2 className="font-extrabold text-white ">{code.titre}</h2>
             <p className="text-white">{code.text}</p>
           </div>
-        </div>))}
+        </motion.div>))}
       </div>
     </div>
   );
