@@ -1,8 +1,16 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
 
-export default function navbar() {
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <nav className="h-[80px] flex items-center justify-center">
+    <nav className="h-[80px] flex items-center justify-center relative z-10">
       <div className="w-full flex items-center justify-around mx-auto">
         <a href="/" className="flex justify-center items-center">
           <Image
@@ -14,11 +22,10 @@ export default function navbar() {
           />
         </a>
         <button
-          data-collapse-toggle="navbar-default"
+          onClick={toggleMenu}
           type="button"
           className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          aria-controls="navbar-default"
-          aria-expanded="false"
+          aria-expanded={isOpen}
         >
           <span className="sr-only">Open main menu</span>
           <svg
@@ -37,35 +44,62 @@ export default function navbar() {
             />
           </svg>
         </button>
-        <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul className="font-medium flex flex-col items-center p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
+
+        {/* Desktop Navigation */}
+        <div className="hidden w-full md:block md:w-auto">
+          <ul className="font-medium flex items-center space-x-8">
             <li>
-              <a
-                href="/"
-                className="text-white relative hover:text-[#bbf3ff] cursor-pointer transition-all ease-in-out before:transition-[width] before:ease-in-out before:duration-700 before:absolute before:bg-[#bbf3ff] before:origin-center before:h-[1px] before:w-0 hover:before:w-[50%] before:bottom-0 before:left-[50%] after:transition-[width] after:ease-in-out after:duration-700 after:absolute after:bg-[#bbf3ff] after:origin-center after:h-[1px] after:w-0 hover:after:w-[50%] after:bottom-0 after:right-[50%]"
-                aria-current="page"
-              >
-                Accueil
-              </a>
+              <a href="/" className="text-white hover:text-[#bbf3ff]">Accueil</a>
             </li>
             <li>
-              <a
-                href="#section1"
-                className="text-white relative hover:text-[#bbf3ff] cursor-pointer transition-all ease-in-out before:transition-[width] before:ease-in-out before:duration-700 before:absolute before:bg-[#bbf3ff] before:origin-center before:h-[1px] before:w-0 hover:before:w-[50%] before:bottom-0 before:left-[50%] after:transition-[width] after:ease-in-out after:duration-700 after:absolute after:bg-[#bbf3ff] after:origin-center after:h-[1px] after:w-0 hover:after:w-[50%] after:bottom-0 after:right-[50%]"
-              >
-                Réalisations
-              </a>
+              <a href="#section1" className="text-white hover:text-[#bbf3ff]">Réalisations</a>
             </li>
             <li className="border-2 border-white hover:border-[#bbf3ff] rounded p-2">
-              <a
-                href="#section2"
-                className="text-white relative hover:text-[#bbf3ff] cursor-pointer transition-all ease-in-out before:transition-[width] before:ease-in-out before:duration-700 before:absolute before:bg-[#bbf3ff] before:origin-center before:h-[1px] before:w-0 hover:before:w-[50%] before:bottom-0 before:left-[50%] after:transition-[width] after:ease-in-out after:duration-700 after:absolute after:bg-[#bbf3ff] after:origin-center after:h-[1px] after:w-0 hover:after:w-[50%] after:bottom-0 after:right-[50%]"
-              >
-                Me contacter
-              </a>
+              <a href="#section2" className="text-white hover:text-[#bbf3ff]">Me contacter</a>
             </li>
           </ul>
         </div>
+
+        {/* Mobile Overlay Navigation */}
+        {isOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-80 z-20 flex items-center justify-center">
+            <button
+              onClick={toggleMenu}
+              className="absolute top-4 right-4 text-white text-2xl"
+            >
+              &times;
+            </button>
+            <ul className="font-medium flex flex-col items-center space-y-8 text-white">
+              <li>
+                <a
+                  href="/"
+                  className="text-white text-lg hover:text-[#bbf3ff]"
+                  onClick={toggleMenu}
+                >
+                  Accueil
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#section1"
+                  className="text-white text-lg hover:text-[#bbf3ff]"
+                  onClick={toggleMenu}
+                >
+                  Réalisations
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#section2"
+                  className="text-white text-lg hover:text-[#bbf3ff] border-2 border-white rounded p-2"
+                  onClick={toggleMenu}
+                >
+                  Me contacter
+                </a>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
     </nav>
   );
