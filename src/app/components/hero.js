@@ -8,7 +8,7 @@ export default function hero() {
       <div
         className="flex items-center  bg-cover bg-center justify-center  min-h-screen p-8 font-[family-name:var(--font-geist-sans)]"
         style={{ backgroundImage: "url(/assets/bg7.gif)" }}
-      >
+      > 
         <div className="background z-[-2]">
           {/* Ajoute ici les spans pour les éléments animés */}
           {Array.from({ length: 20 }).map((_, index) => (
@@ -34,19 +34,50 @@ export default function hero() {
             <p className="text-center text-white text-xl md:text-left">
               Développeur Web Front-end
             </p>
-            <a href="#section2" className="p-2 border rounded mt-1 border-[#bbf3ff] text-[#bbf3ff]  hover:bg-[#bbf3ff] hover:text-black">
+            <a
+              href="#section2"
+              className="p-2 border rounded mt-1 border-[#bbf3ff] text-[#bbf3ff]  hover:bg-[#bbf3ff] hover:text-black"
+            >
               Me contacter
             </a>
           </div>
 
-          <div>
+          <div className="bg-black w-[300px] rounded-full hidden md:flex  justify-center items-center">
             <Image
               src="/assets/cof13.jpg"
+              priority
+              quality={100}
               alt="image christo"
-              className="rounded-full w-[300px] hidden md:flex h-auto"
+              className="rounded-full absolute object-contain w-[300px] h-[300px]"
               width={1000}
               height={1000}
             />
+            <motion.svg
+              className="w-[300px] relative h-[300px]"
+              fill="transparent"
+              viewBox="0 8 586 586"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <motion.circle
+                cx="300"
+                cy="300"
+                r="300"
+                stroke="#bbf3ff"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                initial={{strokeDasharray: "24 10 0 0"}}
+                animate={{
+                  strokeDasharray: ["15 120 25 25", "16 25 92 72", "4 250 22 22"],
+                  rotate: [120, 360],
+                }}
+                transition={{
+                    duration: 20,
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                }}
+              />
+            </motion.svg>
           </div>
         </motion.main>
       </div>
