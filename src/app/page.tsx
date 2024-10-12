@@ -9,7 +9,7 @@ export default function Home() {
       <Hero />
       <div className="flex flex-col gap-[100px] py-[100px] items-center justify-center ">
         <Service />
-        <div style={{ backgroundImage: "url(/assets/bg1.gif)" }}  className=" w-full flex items-center bg-cover bg-center justify-center">
+        <div style={{ backgroundImage: "url(/assets/bg1.gif)" }}  className=" w-full flex items-center justify-center">
           <Projet />
         </div>
         <Contact />

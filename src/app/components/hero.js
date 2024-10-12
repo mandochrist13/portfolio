@@ -21,10 +21,10 @@ export default function hero() {
         <main className="flex items-center gap-6 justify-center">
           <div className="flex md:block flex-col items-center justify-center">
             <h3 className="text-[#bbf3ff] text-xl">Bonjour, je suis</h3>
-            <h1 className="text-3xl md:text-5xl text-center md:text-left">
+            <h1 className="text-3xl text-white md:text-5xl text-center md:text-left">
               MANDO <br /> Hamidou Christ-Of-Fair
             </h1>
-            <p className="text-center text-xl md:text-left">
+            <p className="text-center text-white text-xl md:text-left">
               Développeur Web Front-end
             </p>
             <button className="p-2 border rounded mt-6 border-[#bbf3ff] text-[#bbf3ff]  hover:bg-[#bbf3ff] hover:text-black">

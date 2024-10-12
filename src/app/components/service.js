@@ -6,7 +6,7 @@ export default function servivce() {
     <div className="flex px-[5%] w-full max-w-[1000px] gap-6 flex-col">
       <div>
         <p className="text-[#bbf3ff] text-xl">Mes compétences</p>
-        <h1 className="text-3xl md:text-4xl text-left">
+        <h1 className="text-3xl md:text-4xl text-white text-left">
           Services
         </h1>
       </div>
@@ -23,8 +23,8 @@ export default function servivce() {
             />
           </div>
           <div>
-            <h2 className="font-extrabold ">{code.titre}</h2>
-            <p>{code.text}</p>
+            <h2 className="font-extrabold text-white ">{code.titre}</h2>
+            <p className="text-white">{code.text}</p>
           </div>
         </div>))}
       </div>

@@ -24,7 +24,7 @@ export default function servivce() {
               />
             </div>
             <div>
-              <h2 className="text-2xl">{code.titre}</h2>
+              <h2 className="text-2xl text-white">{code.titre}</h2>
               <a href={code.tel} className="text-[#bbf3ff]">{code.link}</a>
             </div>
           </div>
