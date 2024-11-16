@@ -1,16 +1,53 @@
+"use client"
+
 import Image from "next/image";
+import { motion, useInView } from "framer-motion";
 import { projets } from "../data/cust";
+import { EyeIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
+import { useRef } from "react";
+
+const container = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+      delay: 0.2,
+      duration: 1.5,
+      ease: "easeInOut",
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 50, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    rotate: [0, 5, -5, 0], // Ajout de légères rotations pour plus de dynamisme
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 10,
+    },
+  },
+};
 
 export default function projet() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   return (
-    <div className="flex py-[100px] px-[5%] w-full max-w-[1000px] gap-6 flex-col">
+    <div className="flex py-[100px] w-full gap-6 flex-col">
       <div>
-        <p id="section1" className="text-[#bbf3ff] text-xl">
-          Mes Clients
-        </p>
-        <h1 className="text-3xl md:text-4xl text-white text-left">Projets</h1>
+        <h1 id="section1" className="text-3xl text-cyan-800 font-bold">
+          Mes projets
+        </h1>
+     
       </div>
-      <div className="grid justify-center items-center md:grid-cols-2 lg:grid-cols-3  gap-10">
+      {/* <div className="grid justify-center items-center md:grid-cols-2 lg:grid-cols-3  gap-10">
         {projets.map((code) => (
           <div
             className="border-b w-full h-full mx-auto rounded-t pb-4 flex flex-col gap-6 bg-[#0A0A0A] border-[#bbf3ff]"
@@ -42,8 +79,39 @@ export default function projet() {
             </div>
           </div>
         ))}
-      </div>
-     
+      </div> */}
+      <motion.div ref={ref}
+          variants={container}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+           className="grid justify-center items-center md:grid-cols-2 lg:grid-cols-3  gap-10">
+        {projets.map((code) => (
+          <motion.div key={code.id} variants={item}>
+            <div
+              className="h-52 rounded-t-xl relative group"
+              style={{
+                background: `url(${code.photo})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              <div className="overlay rounded-t-xl items-center justify-center absolute top-0 left-0 w-full h-full bg-[#181818] bg-opacity-0 hidden group-hover:flex group-hover:bg-opacity-80 transition-all duration-500 ">
+                <Link
+                  href={code.lien}
+                  target="_blank"
+                  className="h-14 w-14 border-2 relative rounded-full border-[#ADB7BE] hover:border-white group/link"
+                >
+                  <EyeIcon className="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  cursor-pointer group-hover/link:text-white" />
+                </Link>
+              </div>
+            </div>
+            <div className="text-cyan-950 rounded-b-xl mt-3 bg-[#181818]py-6 px-4">
+              <h5 className="text-xl font-semibold mb-2">{code.titre}</h5>
+              <p className="text-[#ADB7BE]">{code.text}</p>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
     </div>
   );
 }

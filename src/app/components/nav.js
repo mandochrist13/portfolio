@@ -10,7 +10,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="h-[80px] flex items-center justify-center relative z-10">
+    <nav className="h-[80px]  flex items-center justify-center relative z-10">
       <div className="w-full flex items-center justify-around mx-auto">
         <a href="/" className="flex justify-center items-center">
           <Image
@@ -49,13 +49,13 @@ export default function Navbar() {
         <div className="hidden w-full md:block md:w-auto">
           <ul className="font-medium flex items-center space-x-8">
             <li>
-              <a href="/" className="text-white hover:text-[#bbf3ff]">Accueil</a>
+              <a href="/" className="text-cyan-950 hover:text-cyan-600">Accueil</a>
             </li>
             <li>
-              <a href="#section1" className="text-white hover:text-[#bbf3ff]">Réalisations</a>
+              <a href="#section1" className="text-cyan-950 hover:text-cyan-600">Réalisations</a>
             </li>
-            <li className="border-2 border-white hover:border-[#bbf3ff] rounded p-2">
-              <a href="#section2" className="text-white hover:text-[#bbf3ff]">Me contacter</a>
+            <li className=" bg-gradient-to-r from-teal-400 to-cyan-500 rounded p-2">
+              <a href="#section2" className="text-cyan-950 hover:text-white">Me contacter</a>
             </li>
           </ul>
         </div>
