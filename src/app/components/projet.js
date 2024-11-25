@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { projets } from "../data/cust";
 import { EyeIcon } from "@heroicons/react/24/outline";
@@ -36,7 +35,7 @@ const item = {
   },
 };
 
-export default function projet() {
+export default function Projet() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   return (

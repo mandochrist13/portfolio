@@ -1,4 +1,4 @@
-import { inView, animate } from "motion";
+import { inView, animate } from "framer-motion";
 
 const emailAnimation = () => {
   const emailCard = document.querySelectorAll(".emailCard");
@@ -60,15 +60,20 @@ const formAnimation = () => {
 };
 
 const mobileAnimation = () => {
-  inView(".mobile-animation", (info) => {
-    animate(info.target, { opacity: 1 }, { duration: 0.5, delay: 0.2 });
+  inView(".mobile-animation", (info: unknown) => {
+    if (typeof info === "object" && info !== null && "target" in info) {
+      const target = (info as { target: HTMLElement }).target;
+      animate(target, { opacity: 1 }, { duration: 0.5, delay: 0.2 });
+    }
   });
 };
 
-export default {
+const contactAnimations = {
   emailAnimation,
   githubAnimation,
   linkedInAnimation,
   formAnimation,
   mobileAnimation,
 };
+
+export default contactAnimations;

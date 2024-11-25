@@ -1,6 +1,6 @@
 "use client";
 import Service from "./service";
-import React, { useEffect, useTransition, useState } from "react";
+import React, { useEffect } from "react";
 
 import TabButton from "./TabButton";
 import { SiWhatsapp } from "react-icons/si";
@@ -21,15 +21,8 @@ import Link from "next/link";
 
 
 export default function About() {
-  const [tab, setTab] = useState("skills");
-  const [isPending, startTransition] = useTransition();
-
-  const handleTabChange = (id: string) => {
-    startTransition(() => {
-      setTab(id);
-    });
-  };
-  let cloudIconskills = [
+ 
+  const cloudIconskills = [
     "react",
     "typescript",
     "javascript",
@@ -77,28 +70,41 @@ export default function About() {
         <CardBody className="gap-2">
           <h2 className="text-3xl text-cyan-800 font-bold">Qui suis-je?</h2>
           <p className="text-lg text-black">
-            Passionné par l'univers numérique ainsi que la conception et le
-            développement d'applications web, compétent en web design et avec
+            Passionné par l&apos;univers numérique ainsi que la conception et le
+            développement d&apos;applications web, compétent en web design et avec
             une connaissance des frameworks front-end.
           </p>
         </CardBody>
       </Card>
 
       {/* Location Card */}
-      <div className="w-full rounded-2xl transition duration-200 flex md:col-start-3 md:col-span-2  lg:row-span-2 lg:col-start-3 h-full md:relative lg:mobile-animation lg:verticalImage">
-        <motion.div className="md:absolute bg-[#80C1F9] backdrop-blur-md bg-[#80c0f9c2]  rounded-2xl flex justify-center p-5 flex-col w-full h-full">
-          <div className="flex items-center">
-            <MapPinIcon className="h-8 w-8 text-cyan-950" />
-            <h1 className="font-bold">Gabon, Libreville</h1>
-          </div>
-          <div className="text-lg mt-4 text-black">
-            Rejoignez-moi pour créer des projets web incroyables, peu importe où
-            vous êtes dans le monde. Ensemble, nous transformons les idées en
-            réalité digitale ! 🚀🌍
-          </div>
-          <LocationGlobe />
-        </motion.div>
-      </div>
+      <div className="w-full h-full flex flex-col rounded-2xl transition duration-200 md:col-start-3 md:col-span-2 lg:row-span-2 lg:col-start-3 md:relative lg:mobile-animation lg:verticalImage">
+  <motion.div
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, ease: "easeOut" }}
+    className="md:absolute bg-[#80c0f9c2] backdrop-blur-md rounded-2xl flex flex-col p-5 w-full h-full"
+  >
+    {/* En-tête */}
+    <div className="flex items-center space-x-3 mb-4">
+      <MapPinIcon className="h-8 w-8 text-cyan-950" />
+      <h1 className="font-bold text-xl text-cyan-900">Gabon, Libreville</h1>
+    </div>
+
+    {/* Texte d'introduction */}
+    <div className="text-lg text-black leading-relaxed">
+      Rejoignez-moi pour créer des projets web incroyables, peu importe où vous
+      êtes dans le monde. Ensemble, nous transformons les idées en réalité
+      digitale ! 🚀🌍
+    </div>
+
+    {/* Globe interactif */}
+    <div className="mt-6">
+      <LocationGlobe />
+    </div>
+  </motion.div>
+</div>
+
 
     
       {/* Profession Card */}
@@ -140,7 +146,7 @@ export default function About() {
       {/* Quote Card */}
       <Card className="bg-cyan-950 rounded-2xl transition duration-200 border border-black/[0.1] dark:border-white/[0.1] lg:flex col-span-2 md:row-span-1 md:col-start-1 lg:row-start-3 lg:row-span-1 lg:col-start-3 lg:col-span-1 opacity-0 mobile-animation quoteCard">
         <CardBody className="flex justify-center items-center w-full h-full">
-          <div className="text-3xl font-bold text-center">“J'aime beaucoup créer des solutions logicielles”</div>
+          <div className="text-3xl font-bold text-center">“J&apos;aime beaucoup créer des solutions logicielles”</div>
         </CardBody>
       </Card>
 

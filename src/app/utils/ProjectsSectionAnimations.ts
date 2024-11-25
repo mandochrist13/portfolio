@@ -1,7 +1,7 @@
-import { inView, animate } from "motion";
+import { inView, animate } from "framer-motion";
 
 const titleAnimation = () => {
-  inView(".titleSection", (info) => {
+  inView(".titleSection", (info: { target: unknown }) => {
     animate(
       info.target,
       {
@@ -14,12 +14,11 @@ const titleAnimation = () => {
 };
 
 const videoAnimation = () => {
-  inView(".videoSection", (info) => {
+  inView(".videoSection", (info: { target: unknown }) => {
     animate(
       info.target,
       {
         opacity: [0, 0.2, 0.8, 1],
-        // transform: ["translateY(100px) ", "none"],
       },
       { duration: 0.5, delay: 0.2 }
     );
@@ -27,7 +26,7 @@ const videoAnimation = () => {
 };
 
 const descriptionAnimation = () => {
-  inView(".descriptionCard", (info) => {
+  inView(".descriptionCard", (info: { target: unknown }) => {
     animate(
       info.target,
       {
@@ -40,7 +39,7 @@ const descriptionAnimation = () => {
 };
 
 const githubUrlAnimation = () => {
-  inView(".githubUrlCard", (info) => {
+  inView(".githubUrlCard", (info: { target: unknown }) => {
     animate(
       info.target,
       {
@@ -53,7 +52,7 @@ const githubUrlAnimation = () => {
 };
 
 const websiteUrlAnimation = () => {
-  inView(".websiteUrlCard", (info) => {
+  inView(".websiteUrlCard", (info: { target: unknown }) => {
     animate(
       info.target,
       {
@@ -66,12 +65,12 @@ const websiteUrlAnimation = () => {
 };
 
 const mobileAnimation = () => {
-  inView(".mobile-animation", (info) => {
+  inView(".mobile-animation", (info: { target: unknown }) => {
     animate(info.target, { opacity: 1 }, { duration: 0.5, delay: 0.2 });
   });
 };
 
-export default {
+const projectsAnimations = {
   titleAnimation,
   videoAnimation,
   descriptionAnimation,
@@ -79,3 +78,5 @@ export default {
   githubUrlAnimation,
   mobileAnimation,
 };
+
+export default projectsAnimations;

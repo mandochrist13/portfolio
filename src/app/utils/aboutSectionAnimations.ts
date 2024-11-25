@@ -96,7 +96,7 @@ const mobileAnimation = () => {
   });
 };
 
-export default {
+const animations = {
   whoAmIAnimation,
   professionAnimation,
   quoteAnimation,
@@ -105,3 +105,5 @@ export default {
   educationContentAnimation,
   mobileAnimation,
 };
+
+export default animations;

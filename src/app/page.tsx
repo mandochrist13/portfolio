@@ -1,4 +1,4 @@
-import Service from "./components/service";
+
 import Hero from "./components/hero";
 import Projet from "./components/projet";
 import Footer from "./components/footer";
